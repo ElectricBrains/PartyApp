@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="contact" type="com.example.myapplication.models.Contact" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.github.abdularis.civ.CircleImageView
+            android:id="@+id/contact_avatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="16dp"
+            android:scaleType="centerCrop"
+            app:imageContact="@{contact}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+        <TextView
+            android:id="@+id/party_event_owner"
+            android:layout_width="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/contact_avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@{contact.name}"
+            android:textAppearance="?attr/textAppearanceBody1"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

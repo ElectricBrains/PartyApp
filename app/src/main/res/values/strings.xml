@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Вечеринка App</string>
+    <string name="party_list">Вечеринки</string>
+    <string name="party">Вечеринка</string>
+    <string name="request_permissions_description">Для продолжения работы необходимо получить системные разрешения</string>
+    <string name="get_permission">Получить разрешение</string>
+    <string name="request_error">Разрешение не полученно, если вы запретили навсегда, но хотите продолжить использование, перейдите в настройки и дайте приложению необходимые разрешения</string>
+    <string name="show_settings">Открыть настройки</string>
+    <string name="owner_decription">Пригласил(а):</string>
+    <string name="map_button_text">Карта</string>
+    <string name="joined_friends_header_text">С вами придут</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

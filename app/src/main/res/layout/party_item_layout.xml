@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable name="viewModel" type="com.example.myapplication.viewmodels.PartyViewModel" />
+
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:clickable="true"
+        android:focusable="true"
+        android:checkable="true"
+        app:cardElevation="16dp"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/party_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                app:imageUrl="@{viewModel.partyPhotoUrl}"
+                app:error="@{@drawable/error}"
+                android:src="@drawable/error" />
+
+            <com.github.abdularis.civ.CircleImageView
+                android:id="@+id/owner_avatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="16dp"
+                android:scaleType="centerCrop"
+                app:imageContact="@{viewModel.eventOwner}"
+
+                app:layout_constraintTop_toTopOf="@id/party_name"
+                app:layout_constraintBottom_toBottomOf="@id/party_event_owner"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/party_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.name}"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintLeft_toRightOf="@+id/owner_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/party_image"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+            <TextView
+                android:id="@+id/party_event_owner"
+                android:layout_width="0dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@+id/party_name"
+                app:layout_constraintLeft_toRightOf="@+id/owner_avatar"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content"
+                app:partyOwner="@{viewModel.eventOwner}"
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+            <ViewStub
+                android:id="@+id/joined_friends_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/party_event_owner"
+                android:inflatedId="@+id/joined_friends_stub"
+                app:viewModel="@{viewModel}"
+                android:layout="@layout/joined_friends_layout" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/show_map_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/map_button_text"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/joined_friends_stub"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                style="?attr/materialButtonOutlinedStyle"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
